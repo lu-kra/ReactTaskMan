@@ -8,6 +8,10 @@ import { useState } from 'react'
 
 function App() {
 
+  // toggle pre Add New Task
+  const [showAddTask, setShowAddTask] = useState(false)
+
+
   const [tasks, setTasks] = useState([
     {
         id: 1,
@@ -59,10 +63,14 @@ const toggleReminder = (id) => {
 
   return (
     <div className="container">   
-      <Header title='React TaskMan' />
-      <AddTask onAdd={addTask} />
+      <Header onAdd={() => setShowAddTask(!showAddTask)} title='React TaskMan' />
+      
+      { 
+      showAddTask && <AddTask onAdd={addTask} />     // ak je kliknuty button zobrazi sa formular inak nie
+      }
 
-      { tasks.length > 0 ?                                  // ak neexistuje task zobraz hlasku
+      { 
+      tasks.length > 0 ?                                  // ak neexistuje task zobraz hlasku
         <Tasks tasks={tasks} 
         onDelete={deleteTask} 
         onToggle={toggleReminder}
