@@ -29,11 +29,23 @@ function App() {
 ])
 
 
+// Delete task function
+
+  const deleteTask = (id) => {
+    // console.log('delete', id)
+    setTasks(tasks.filter((task) => task.id !== id))               //filtruj vsetky tasky ktore nemaju id na ktore sme klikli
+  }
+   
+
 
   return (
     <div className="container">   
       <Header title='React TaskMan' />
-      <Tasks tasks={tasks} />
+
+      { tasks.length > 0 ?                                  // ak neexistuje task zobraz hlasku
+        <Tasks tasks={tasks} onDelete={deleteTask} />
+        : <p className="task">No available tasks to do</p>
+      }
     </div>
   );
 }
