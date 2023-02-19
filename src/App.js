@@ -63,7 +63,7 @@ const toggleReminder = (id) => {
 
   return (
     <div className="container">   
-      <Header onAdd={() => setShowAddTask(!showAddTask)} title='React TaskMan' />
+      <Header onAdd={() => setShowAddTask(!showAddTask)} showAdd={showAddTask} title='React TaskMan' />
       
       { 
       showAddTask && <AddTask onAdd={addTask} />     // ak je kliknuty button zobrazi sa formular inak nie

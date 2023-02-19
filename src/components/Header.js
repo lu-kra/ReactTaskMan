@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import Button from './Button'
 
 
-const Header = ( { title, onAdd }) => {
+const Header = ( { title, onAdd, showAdd}) => {
 
 
   // const onDelete = () => {
@@ -13,7 +13,7 @@ const Header = ( { title, onAdd }) => {
     <header className='header'>
         {/* <h1 style={ headingStyle }> {title}</h1> */}
           <h1> {title}</h1>
-      <Button color='green' text='Add new task' onClick={onAdd} />
+      <Button color={!showAdd ? 'green' : 'red'} text={!showAdd ? 'Add new task' : 'Hide'} onClick={onAdd} />
       {/* <Button color='green' text='Add new task' onClick={onDelete} /> */}
     </header>
   )
