@@ -31,6 +31,17 @@ function App() {
 ])
 
 
+// Add new task to app
+
+const addTask = (task) =>  {
+  // console.log(task)
+  // generujem ID kedze nemam ID s backendu
+  const id = Math.floor(Math.random() * 1000) + 1
+
+ const newTask = { id, ...task }
+ setTasks([...tasks, newTask])
+}
+
 // Delete task function
 
   const deleteTask = (id) => {
@@ -49,7 +60,7 @@ const toggleReminder = (id) => {
   return (
     <div className="container">   
       <Header title='React TaskMan' />
-      <AddTask />
+      <AddTask onAdd={addTask} />
 
       { tasks.length > 0 ?                                  // ak neexistuje task zobraz hlasku
         <Tasks tasks={tasks} 
